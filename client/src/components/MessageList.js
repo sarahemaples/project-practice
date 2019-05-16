@@ -1,31 +1,14 @@
 import React from 'react'
-
-const DUMMY_DATA = [
-    {
-        senderId: "smaples",
-        text: "hi its sarah"
-    },
-    {
-        senderId: "soph",
-        text: "whats good its your favorite loaf of soph"
-    },
-    {
-        senderId: "lr",
-        text: "hi im lr"
-    }
-]
+import Message from './Message'
 
 class MessageList extends React.Component {
     render() {
         return (
             <div className="message-list">
-                {DUMMY_DATA.map((message, index) => {
+                {this.props.messages.map((message, index) => {
                     return (
+                        <Message key={index} username={message.senderId} text={message.text} />
                         // not recommended to use index but for now its good
-                        <div key={index} className="message">
-                            <div className="message-username">{message.senderId}</div>
-                            <div className="message-text">{message.text}</div>
-                        </div>
                     )
                 })}
             </div>
